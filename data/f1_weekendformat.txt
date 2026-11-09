@@ -1,0 +1,48 @@
+Formula One race weekends have two formats: Standard and Sprint Weekend.
+
+Standard Weekend Format:
+Friday:
+
+Practice 1 (FP1)
+
+Practice 2 (FP2)
+
+Saturday:
+
+Practice 3 (FP3)
+
+Qualifying (Q1, Q2, Q3)
+
+Sunday:
+
+Grand Prix Race
+
+Sprint Weekend Format:
+Friday:
+
+Practice 1
+
+Sprint Qualifying (Shootout qualifying)
+
+Saturday:
+
+Sprint Race (about 100 km, no mandatory pit stop)
+
+Sunday:
+
+Grand Prix Race
+
+Sprint race points:
+1st: 8
+2nd: 7
+3rd: 6
+4th: 5
+5th: 4
+6th: 3
+7th: 2
+8th: 1
+
+Qualifying sessions:
+Q1: all drivers, slowest 5 eliminated
+Q2: remaining 15 drivers, slowest 5 eliminated
+Q3: final 10 compete for pole position

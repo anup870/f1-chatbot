@@ -1,0 +1,23 @@
+Formula One (F1) is the highest class of international single-seater auto racing sanctioned by the Fédération Internationale de l'Automobile (FIA). The championship began in 1950 and consists of a series of races called Grands Prix held worldwide on purpose-built circuits and public roads.
+
+Each race weekend typically includes three practice sessions, a qualifying session that determines starting order, and the Grand Prix race on Sunday.
+
+Points are awarded to the top ten finishers in each race. The scoring system is:
+1st: 25 points
+2nd: 18 points
+3rd: 15 points
+4th: 12 points
+5th: 10 points
+6th: 8 points
+7th: 6 points
+8th: 4 points
+9th: 2 points
+10th: 1 point
+
+An additional point is awarded for the fastest lap if the driver finishes in the top 10.
+
+Two championships are awarded each season:
+
+Drivers' Championship
+
+Constructors' Championship

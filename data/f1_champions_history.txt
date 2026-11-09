@@ -1,0 +1,309 @@
+Formula One World Champions by Year
+
+1950:
+Drivers' Champion: Giuseppe Farina
+Constructors' Champion: (Constructors' Championship did not exist yet)
+
+1951:
+Drivers' Champion: Juan Manuel Fangio
+Constructors' Champion: Not awarded
+
+1952:
+Drivers' Champion: Alberto Ascari
+Constructors' Champion: Not awarded
+
+1953:
+Drivers' Champion: Alberto Ascari
+Constructors' Champion: Not awarded
+
+1954:
+Drivers' Champion: Juan Manuel Fangio
+Constructors' Champion: Not awarded
+
+1955:
+Drivers' Champion: Juan Manuel Fangio
+Constructors' Champion: Not awarded
+
+1956:
+Drivers' Champion: Juan Manuel Fangio
+Constructors' Champion: Ferrari
+
+1957:
+Drivers' Champion: Juan Manuel Fangio
+Constructors' Champion: Vanwall
+
+1958:
+Drivers' Champion: Mike Hawthorn
+Constructors' Champion: Vanwall
+
+1959:
+Drivers' Champion: Jack Brabham
+Constructors' Champion: Cooper-Climax
+
+1960:
+Drivers' Champion: Jack Brabham
+Constructors' Champion: Cooper-Climax
+
+1961:
+Drivers' Champion: Phil Hill
+Constructors' Champion: Ferrari
+
+1962:
+Drivers' Champion: Graham Hill
+Constructors' Champion: BRM
+
+1963:
+Drivers' Champion: Jim Clark
+Constructors' Champion: Lotus-Climax
+
+1964:
+Drivers' Champion: John Surtees
+Constructors' Champion: Ferrari
+
+1965:
+Drivers' Champion: Jim Clark
+Constructors' Champion: Lotus-Climax
+
+1966:
+Drivers' Champion: Jack Brabham
+Constructors' Champion: Brabham-Repco
+
+1967:
+Drivers' Champion: Denny Hulme
+Constructors' Champion: Brabham-Repco
+
+1968:
+Drivers' Champion: Graham Hill
+Constructors' Champion: Lotus-Ford
+
+1969:
+Drivers' Champion: Jackie Stewart
+Constructors' Champion: Matra-Ford
+
+1970:
+Drivers' Champion: Jochen Rindt
+Constructors' Champion: Lotus-Ford
+
+1971:
+Drivers' Champion: Jackie Stewart
+Constructors' Champion: Tyrrell-Ford
+
+1972:
+Drivers' Champion: Emerson Fittipaldi
+Constructors' Champion: Lotus-Ford
+
+1973:
+Drivers' Champion: Jackie Stewart
+Constructors' Champion: Lotus-Ford
+
+1974:
+Drivers' Champion: Emerson Fittipaldi
+Constructors' Champion: McLaren-Ford
+
+1975:
+Drivers' Champion: Niki Lauda
+Constructors' Champion: Ferrari
+
+1976:
+Drivers' Champion: James Hunt
+Constructors' Champion: Ferrari
+
+1977:
+Drivers' Champion: Niki Lauda
+Constructors' Champion: Ferrari
+
+1978:
+Drivers' Champion: Mario Andretti
+Constructors' Champion: Lotus-Ford
+
+1979:
+Drivers' Champion: Jody Scheckter
+Constructors' Champion: Ferrari
+
+1980:
+Drivers' Champion: Alan Jones
+Constructors' Champion: Williams-Ford
+
+1981:
+Drivers' Champion: Nelson Piquet
+Constructors' Champion: Williams-Ford
+
+1982:
+Drivers' Champion: Keke Rosberg
+Constructors' Champion: Ferrari
+
+1983:
+Drivers' Champion: Nelson Piquet
+Constructors' Champion: Ferrari
+
+1984:
+Drivers' Champion: Niki Lauda
+Constructors' Champion: McLaren-TAG
+
+1985:
+Drivers' Champion: Alain Prost
+Constructors' Champion: McLaren-TAG
+
+1986:
+Drivers' Champion: Alain Prost
+Constructors' Champion: Williams-Honda
+
+1987:
+Drivers' Champion: Nelson Piquet
+Constructors' Champion: Williams-Honda
+
+1988:
+Drivers' Champion: Ayrton Senna
+Constructors' Champion: McLaren-Honda
+
+1989:
+Drivers' Champion: Alain Prost
+Constructors' Champion: McLaren-Honda
+
+1990:
+Drivers' Champion: Ayrton Senna
+Constructors' Champion: McLaren-Honda
+
+1991:
+Drivers' Champion: Ayrton Senna
+Constructors' Champion: McLaren-Honda
+
+1992:
+Drivers' Champion: Nigel Mansell
+Constructors' Champion: Williams-Renault
+
+1993:
+Drivers' Champion: Alain Prost
+Constructors' Champion: Williams-Renault
+
+1994:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Williams-Renault
+
+1995:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Benetton-Renault
+
+1996:
+Drivers' Champion: Damon Hill
+Constructors' Champion: Williams-Renault
+
+1997:
+Drivers' Champion: Jacques Villeneuve
+Constructors' Champion: Williams-Renault
+
+1998:
+Drivers' Champion: Mika Hakkinen
+Constructors' Champion: McLaren-Mercedes
+
+1999:
+Drivers' Champion: Mika Hakkinen
+Constructors' Champion: Ferrari
+
+2000:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Ferrari
+
+2001:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Ferrari
+
+2002:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Ferrari
+
+2003:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Ferrari
+
+2004:
+Drivers' Champion: Michael Schumacher
+Constructors' Champion: Ferrari
+
+2005:
+Drivers' Champion: Fernando Alonso
+Constructors' Champion: Renault
+
+2006:
+Drivers' Champion: Fernando Alonso
+Constructors' Champion: Renault
+
+2007:
+Drivers' Champion: Kimi Raikkonen
+Constructors' Champion: Ferrari
+
+2008:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Ferrari
+
+2009:
+Drivers' Champion: Jenson Button
+Constructors' Champion: Brawn GP
+
+2010:
+Drivers' Champion: Sebastian Vettel
+Constructors' Champion: Red Bull Racing
+
+2011:
+Drivers' Champion: Sebastian Vettel
+Constructors' Champion: Red Bull Racing
+
+2012:
+Drivers' Champion: Sebastian Vettel
+Constructors' Champion: Red Bull Racing
+
+2013:
+Drivers' Champion: Sebastian Vettel
+Constructors' Champion: Red Bull Racing
+
+2014:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2015:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2016:
+Drivers' Champion: Nico Rosberg
+Constructors' Champion: Mercedes
+
+2017:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2018:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2019:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2020:
+Drivers' Champion: Lewis Hamilton
+Constructors' Champion: Mercedes
+
+2021:
+Drivers' Champion: Max Verstappen
+Constructors' Champion: Mercedes
+
+2022:
+Drivers' Champion: Max Verstappen
+Constructors' Champion: Red Bull Racing
+
+2023:
+Drivers' Champion: Max Verstappen
+Constructors' Champion: Red Bull Racing
+
+2024:
+Drivers' Champion: Max Verstappen
+Constructors' Champion: Red Bull Racing
+
+22025:
+Drivers' Champion: Lando Norris
+Constructors' Champion: McLaren
+
+2026:
+Drivers' Champion: (Season not yet started)
+Constructors' Champion: (Season not yet started)

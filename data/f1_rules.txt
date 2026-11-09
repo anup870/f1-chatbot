@@ -1,0 +1,34 @@
+Modern Formula One cars use hybrid power units consisting of:
+
+Internal Combustion Engine:
+1.6 litre turbocharged V6 engine limited by fuel flow regulations.
+
+Energy Recovery System (ERS):
+Recovers energy from braking (MGU-K) and exhaust heat (MGU-H) and stores it in a battery. This energy can be deployed for extra power during overtaking and acceleration.
+
+Battery Storage:
+Stores recovered electrical energy and supplies additional horsepower when deployed by the driver.
+
+DRS (Drag Reduction System):
+A movable rear wing flap that reduces aerodynamic drag and increases top speed. It can only be activated in designated zones and when the car is within one second of the car ahead, except during practice and qualifying where it is unrestricted.
+
+Tyres:
+Pirelli supplies tyres. Teams must use at least two different dry tyre compounds during a dry race unless wet tyres are used due to rain.
+
+Pit Stops:
+Used primarily to change tyres or repair damage. Modern pit stops typically last between 2 and 3 seconds.
+
+Safety Car:
+Deployed during dangerous track conditions. Cars must follow at reduced speed and overtaking is prohibited.
+
+Virtual Safety Car (VSC):
+Used for minor incidents. Drivers must maintain a delta time and slow down without bunching the field.
+
+Parc Fermé:
+After qualifying begins, teams cannot make major setup changes to the car except for safety reasons.
+
+Track Limits:
+Drivers must keep at least part of the car within white lines; repeated violations can result in penalties.
+
+Penalties:
+Stewards may issue time penalties, drive-through penalties, stop-and-go penalties, or grid penalties depending on the offense.

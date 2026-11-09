@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F1 Chatbot</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Barlow:wght@400;500;600&display=swap");
+
+      :root {
+        --f1-red: #e10600;
+        --f1-black: #0c0c0d;
+        --f1-carbon: #151618;
+        --f1-silver: #c8ccd0;
+        --f1-white: #f8fafb;
+        --f1-border: #2a2d32;
+        --accent-glow: rgba(225, 6, 0, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--f1-white);
+        font-family: "Barlow", sans-serif;
+        background: radial-gradient(circle at 80% 0%, #2b0d0c 0%, transparent 45%),
+          linear-gradient(145deg, #080809 0%, #111315 45%, #0a0a0b 100%);
+        display: grid;
+        place-items: center;
+        padding: 1.25rem;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      body::before {
+        background: repeating-linear-gradient(
+          -35deg,
+          rgba(255, 255, 255, 0.02) 0,
+          rgba(255, 255, 255, 0.02) 8px,
+          transparent 8px,
+          transparent 16px
+        );
+        opacity: 0.35;
+      }
+
+      body::after {
+        inset: auto 0 0 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent 0%, var(--f1-red) 35%, var(--f1-red) 65%, transparent 100%);
+        box-shadow: 0 0 24px var(--accent-glow);
+        animation: pulse 2.2s ease-in-out infinite;
+      }
+
+      .app {
+        width: min(860px, 100%);
+        background: linear-gradient(160deg, rgba(18, 19, 21, 0.95), rgba(10, 10, 11, 0.97));
+        border: 1px solid var(--f1-border);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+        transform: translateY(14px);
+        opacity: 0;
+        animation: reveal 700ms ease-out forwards;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid var(--f1-border);
+        background: linear-gradient(90deg, rgba(225, 6, 0, 0.15), transparent 40%);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: linear-gradient(140deg, var(--f1-red), #a70400);
+        display: grid;
+        place-items: center;
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .tag {
+        border: 1px solid var(--f1-border);
+        padding: 0.35rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.74rem;
+        color: var(--f1-silver);
+        white-space: nowrap;
+      }
+
+      .chatbox {
+        padding: 1rem;
+      }
+
+      #thread {
+        border: 1px solid var(--f1-border);
+        border-radius: 12px;
+        min-height: 300px;
+        max-height: 52vh;
+        overflow-y: auto;
+        padding: 0.9rem;
+        background: linear-gradient(180deg, rgba(20, 21, 23, 0.65), rgba(12, 13, 15, 0.9));
+      }
+
+      .msg {
+        max-width: 88%;
+        margin-bottom: 0.65rem;
+        padding: 0.7rem 0.85rem;
+        border-radius: 12px;
+        line-height: 1.35;
+        animation: slideIn 250ms ease-out;
+      }
+
+      .msg.user {
+        margin-left: auto;
+        background: linear-gradient(145deg, var(--f1-red), #b60500);
+        color: #fff;
+        border-bottom-right-radius: 4px;
+      }
+
+      .msg.bot {
+        background: #1b1d21;
+        border: 1px solid #2f3338;
+        color: var(--f1-white);
+        border-bottom-left-radius: 4px;
+      }
+
+      .controls {
+        margin-top: 0.9rem;
+        display: flex;
+        gap: 0.6rem;
+      }
+
+      #question {
+        flex: 1;
+        background: #14161a;
+        color: var(--f1-white);
+        border: 1px solid #30343a;
+        border-radius: 10px;
+        padding: 0.82rem 0.9rem;
+        font-family: "Barlow", sans-serif;
+        font-size: 0.98rem;
+      }
+
+      #question::placeholder {
+        color: #7f8790;
+      }
+
+      #question:focus {
+        outline: none;
+        border-color: #d21a15;
+        box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.2);
+      }
+
+      #send {
+        border: 0;
+        border-radius: 10px;
+        background: linear-gradient(145deg, var(--f1-red), #ad0501);
+        color: white;
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.84rem;
+        letter-spacing: 0.04em;
+        padding: 0.82rem 1rem;
+        min-width: 110px;
+        cursor: pointer;
+        transition: transform 120ms ease, filter 120ms ease;
+      }
+
+      #send:hover {
+        filter: brightness(1.08);
+      }
+
+      #send:active {
+        transform: translateY(1px);
+      }
+
+      #send[disabled] {
+        opacity: 0.72;
+        cursor: wait;
+      }
+
+      @keyframes reveal {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.35;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .app {
+          border-radius: 14px;
+        }
+
+        .topbar {
+          flex-wrap: wrap;
+        }
+
+        #thread {
+          min-height: 260px;
+          max-height: 48vh;
+        }
+
+        .controls {
+          flex-direction: column;
+        }
+
+        #send {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo">F1</div>
+          <h1>Race Intelligence Chatbot</h1>
+        </div>
+        <div class="tag">Local LLM + RAG</div>
+      </header>
+
+      <section class="chatbox">
+        <div id="thread" aria-live="polite">
+          <div class="msg bot">Pit wall online. Ask me anything about Formula 1.</div>
+        </div>
+
+        <div class="controls">
+          <input id="question" type="text" placeholder="Ask about drivers, teams, races, records..." />
+          <button id="send">Send</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const questionInput = document.getElementById("question");
+      const sendButton = document.getElementById("send");
+      const thread = document.getElementById("thread");
+
+      function addMessage(text, role) {
+        const bubble = document.createElement("div");
+        bubble.className = `msg ${role}`;
+        bubble.textContent = text;
+        thread.appendChild(bubble);
+        thread.scrollTop = thread.scrollHeight;
+      }
+
+      async function sendQuestion() {
+        const question = questionInput.value.trim();
+        if (!question) {
+          addMessage("Please enter a question first.", "bot");
+          return;
+        }
+
+        addMessage(question, "user");
+        questionInput.value = "";
+        questionInput.focus();
+
+        sendButton.disabled = true;
+        const thinkingBubble = document.createElement("div");
+        thinkingBubble.className = "msg bot";
+        thinkingBubble.textContent = "Thinking from the pit wall...";
+        thread.appendChild(thinkingBubble);
+        thread.scrollTop = thread.scrollHeight;
+
+        try {
+          const res = await fetch("/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ question })
+          });
+
+          if (!res.ok) {
+            throw new Error(`Request failed with status ${res.status}`);
+          }
+
+          const data = await res.json();
+          thinkingBubble.textContent = data.answer || "No answer returned.";
+        } catch (error) {
+          thinkingBubble.textContent = `Error: ${error.message}`;
+        } finally {
+          sendButton.disabled = false;
+        }
+      }
+
+      sendButton.addEventListener("click", sendQuestion);
+      questionInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          sendQuestion();
+        }
+      });
+    </script>
+  </body>
+</html>

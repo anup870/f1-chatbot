@@ -1,0 +1,38 @@
+Formula One uses a flag system to communicate with drivers:
+
+Green Flag:
+Track clear and racing allowed.
+
+Yellow Flag:
+Danger ahead, overtaking prohibited.
+
+Double Yellow Flag:
+Serious hazard, drivers must slow significantly and be prepared to stop.
+
+Red Flag:
+Race or session stopped due to unsafe conditions.
+
+Blue Flag:
+A faster car is approaching to lap a slower car; driver must allow passing.
+
+Black Flag:
+Driver is disqualified and must return to pits immediately.
+
+White Flag:
+Slow vehicle ahead.
+
+Chequered Flag:
+End of session or race.
+
+Common penalties:
+Time Penalty:
+5 or 10 seconds added during pit stop or post-race.
+
+Drive-Through Penalty:
+Driver must drive through pit lane at speed limit.
+
+Stop-and-Go Penalty:
+Driver stops in pit box for 10 seconds without work being done.
+
+Grid Penalty:
+Driver starts further back at next race start.

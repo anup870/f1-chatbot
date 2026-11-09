@@ -1,0 +1,2 @@
+Formula 1 reference notes placeholder.
+Add curated F1 history and facts here for ingestion.

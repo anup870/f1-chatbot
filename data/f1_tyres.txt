@@ -1,0 +1,19 @@
+Pirelli supplies tyres to all Formula One teams.
+
+Dry tyres (slicks):
+C1: hardest compound
+C2
+C3
+C4
+C5: softest compound
+
+For each race, three compounds are selected:
+Hard (white)
+Medium (yellow)
+Soft (red)
+
+Wet tyres:
+Intermediate (green) for damp track
+Full Wet (blue) for heavy rain
+
+Teams must use at least two dry compounds in a dry race unless weather conditions require wet tyres.

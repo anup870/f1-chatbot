@@ -1,0 +1,19 @@
+Formula One technical regulations define car design limits.
+
+Minimum Weight:
+Cars must meet a minimum weight including driver and fluids.
+
+Fuel Flow Limit:
+Fuel flow rate is restricted to improve efficiency.
+
+Aerodynamics:
+Front and rear wings are regulated to balance performance and overtaking.
+
+Ground Effect Era (2022+):
+Cars generate downforce primarily from the floor using venturi tunnels to improve racing and reduce dirty air.
+
+Cost Cap:
+Teams have a yearly spending limit to maintain competitive balance.
+
+Parc Fermé:
+After qualifying, teams cannot make major setup changes except under strict conditions.

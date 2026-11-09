@@ -1,0 +1,43 @@
+Formula One teams design and build their own cars but must follow strict FIA regulations. Each team runs two drivers.
+
+Current Formula One Grid (2026 Season):
+
+Red Bull Racing:
+Drivers: Max Verstappen, Sergio Perez
+Known for aerodynamic efficiency and strong race pace.
+
+Mercedes-AMG Petronas Formula One Team:
+Drivers: George Russell, Andrea Kimi Antonelli
+Dominant during the hybrid era (2014–2020) and rebuilding with a new generation driver lineup.
+
+Scuderia Ferrari:
+Drivers: Charles Leclerc, Lewis Hamilton
+The oldest team in Formula One history and one of the most successful.
+
+McLaren:
+Drivers: Lando Norris, Oscar Piastri
+A historic team that returned to championship contention in the mid-2020s.
+
+Aston Martin:
+Drivers: Fernando Alonso, Lance Stroll
+Focused on long-term development with strong technical investment.
+
+Alpine:
+Drivers: Pierre Gasly, Esteban Ocon
+French works team competing for midfield and podium finishes.
+
+Williams Racing:
+Drivers: Alexander Albon, Logan Sargeant
+One of the most historic teams in F1, rebuilding competitively.
+
+RB (Racing Bulls / formerly AlphaTauri):
+Drivers: Yuki Tsunoda, Daniel Ricciardo
+Red Bull sister team used for driver development and talent progression.
+
+Stake F1 Team Kick Sauber:
+Drivers: Valtteri Bottas, Zhou Guanyu
+Transitioning toward becoming the Audi works team in future seasons.
+
+Haas F1 Team:
+Drivers: Kevin Magnussen, Nico Hulkenberg
+American-owned team focusing on efficient operations and steady points finishes.
