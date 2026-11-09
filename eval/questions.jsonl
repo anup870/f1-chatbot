@@ -1,0 +1,57 @@
+{"id": "champ-1950", "category": "stats", "turns": [{"q": "Who won the 1950 World Championship?", "expect_any": ["Farina"], "expect_tool": "champion"}]}
+{"id": "champ-1951", "category": "stats", "turns": [{"q": "Who was the 1951 world champion?", "expect_any": ["Fangio"], "expect_tool": "champion"}]}
+{"id": "champ-1963", "category": "stats", "turns": [{"q": "Who won the drivers title in 1963?", "expect_any": ["Jim Clark"], "expect_tool": "champion"}]}
+{"id": "champ-1976", "category": "stats", "turns": [{"q": "Who won the 1976 championship?", "expect_any": ["James Hunt"], "expect_tool": "champion"}]}
+{"id": "champ-1988", "category": "stats", "turns": [{"q": "Who was champion in 1988?", "expect_any": ["Senna"], "expect_tool": "champion"}]}
+{"id": "champ-1996", "category": "stats", "turns": [{"q": "Who won the 1996 Formula 1 championship?", "expect_any": ["Damon Hill"], "expect_tool": "champion"}]}
+{"id": "champ-1997", "category": "stats", "turns": [{"q": "Who won the title in 1997?", "expect_any": ["Villeneuve"], "expect_tool": "champion"}]}
+{"id": "champ-1998", "category": "stats", "turns": [{"q": "1998 world champion?", "expect_any": ["Häkkinen", "Hakkinen"], "expect_tool": "champion"}]}
+{"id": "champ-2007", "category": "stats", "turns": [{"q": "Who won the 2007 championship?", "expect_any": ["Räikkönen", "Raikkonen"], "expect_tool": "champion"}]}
+{"id": "champ-2009", "category": "stats", "turns": [{"q": "Who won the 2009 constructors championship?", "expect_any": ["Brawn"], "expect_tool": "champion"}]}
+{"id": "champ-2016", "category": "stats", "turns": [{"q": "Who won the 2016 world championship?", "expect_any": ["Nico Rosberg"], "expect_tool": "champion"}]}
+{"id": "champ-2024-c", "category": "stats", "turns": [{"q": "Which team won the 2024 constructors championship?", "expect_any": ["McLaren"], "expect_tool": "champion"}]}
+{"id": "career-msc-wins", "category": "stats", "turns": [{"q": "How many races did Michael Schumacher win in his career?", "expect_any": ["91 wins"], "expect_tool": "driver_career"}]}
+{"id": "career-msc-poles", "category": "stats", "turns": [{"q": "How many pole positions did Michael Schumacher get?", "expect_any": ["68 poles"], "expect_tool": "driver_career"}]}
+{"id": "career-senna", "category": "stats", "turns": [{"q": "Ayrton Senna career stats", "expect_any": ["41 wins"], "expect_tool": "driver_career"}]}
+{"id": "career-prost", "category": "stats", "turns": [{"q": "How many titles did Prost win?", "expect_any": ["4 world titles"], "expect_tool": "driver_career"}]}
+{"id": "career-vettel", "category": "stats", "turns": [{"q": "How many wins does Sebastian Vettel have?", "expect_any": ["53 wins"], "expect_tool": "driver_career"}]}
+{"id": "career-button", "category": "stats", "turns": [{"q": "Jenson Button career wins", "expect_any": ["15 wins"], "expect_tool": "driver_career"}]}
+{"id": "career-clark", "category": "stats", "turns": [{"q": "How many Grands Prix did Jim Clark win?", "expect_any": ["25 wins"], "expect_tool": "driver_career"}]}
+{"id": "career-fangio", "category": "stats", "turns": [{"q": "How many world titles did Fangio win?", "expect_any": ["5 world titles"], "expect_tool": "driver_career"}]}
+{"id": "career-stewart", "category": "stats", "turns": [{"q": "Jackie Stewart wins", "expect_any": ["27 wins"], "expect_tool": "driver_career"}]}
+{"id": "season-ver-2023", "category": "stats", "turns": [{"q": "How many races did Verstappen win in 2023?", "expect_any": ["19 wins"], "expect_tool": "driver_season"}]}
+{"id": "season-vet-2013", "category": "stats", "turns": [{"q": "How many wins did Vettel get in 2013?", "expect_any": ["13 wins"], "expect_tool": "driver_season"}]}
+{"id": "season-msc-2004", "category": "stats", "turns": [{"q": "Michael Schumacher wins in 2004", "expect_any": ["13 wins"], "expect_tool": "driver_season"}]}
+{"id": "season-ham-2020", "category": "stats", "turns": [{"q": "How many races did Hamilton win in 2020?", "expect_any": ["11 wins"], "expect_tool": "driver_season"}]}
+{"id": "season-senna-1988", "category": "stats", "turns": [{"q": "How many races did Senna win in 1988?", "expect_any": ["8 wins"], "expect_tool": "driver_season"}]}
+{"id": "race-2021-abudhabi", "category": "stats", "turns": [{"q": "Who won the 2021 Abu Dhabi Grand Prix?", "expect_any": ["P1 Max Verstappen"], "expect_tool": "race_result"}]}
+{"id": "race-2020-italy", "category": "stats", "turns": [{"q": "Who won the 2020 Italian GP?", "expect_any": ["P1 Pierre Gasly"], "expect_tool": "race_result"}]}
+{"id": "race-2008-brazil", "category": "stats", "turns": [{"q": "Results of the 2008 Brazilian Grand Prix", "expect_any": ["P1 Felipe Massa"], "expect_tool": "race_result"}]}
+{"id": "race-2012-spain", "category": "stats", "turns": [{"q": "Who won the 2012 Spanish Grand Prix?", "expect_any": ["P1 Pastor Maldonado"], "expect_tool": "race_result"}]}
+{"id": "race-2016-spain", "category": "stats", "turns": [{"q": "Who won the 2016 Spanish GP?", "expect_any": ["P1 Max Verstappen"], "expect_tool": "race_result"}]}
+{"id": "race-2020-sakhir", "category": "stats", "turns": [{"q": "Who won the 2020 Sakhir Grand Prix?", "expect_any": ["P1 Sergio Pérez", "P1 Sergio Perez"], "expect_tool": "race_result"}]}
+{"id": "race-1998-belgium", "category": "stats", "turns": [{"q": "Who won the 1998 Belgian Grand Prix?", "expect_any": ["P1 Damon Hill"], "expect_tool": "race_result"}]}
+{"id": "lb-titles", "category": "stats", "turns": [{"q": "Who has the most world championships?", "expect_any": ["— 7"], "expect_tool": "leaderboard"}]}
+{"id": "lb-wins", "category": "stats", "turns": [{"q": "Who has the most race wins of all time?", "expect_any": ["1. Lewis Hamilton"], "expect_tool": "leaderboard"}]}
+{"id": "lb-poles", "category": "stats", "turns": [{"q": "Who has the most pole positions ever?", "expect_any": ["1. Lewis Hamilton"], "expect_tool": "leaderboard"}]}
+{"id": "lb-team-titles", "category": "stats", "turns": [{"q": "Which constructor has the most titles?", "expect_any": ["1. Ferrari"], "expect_tool": "leaderboard"}]}
+{"id": "cmp-2016", "category": "stats", "turns": [{"q": "Compare Hamilton and Rosberg in 2016", "expect_any": ["Nico Rosberg"], "expect_tool": "compare"}]}
+{"id": "whatif-2008", "category": "stats", "turns": [{"q": "Who would have won 2008 under the medals system?", "expect_any": ["Felipe Massa would have won 2008"], "expect_tool": "whatif"}]}
+{"id": "rag-yellow", "category": "rag", "turns": [{"q": "What does a yellow flag mean?", "expect_any": ["overtaking", "overtake"]}]}
+{"id": "rag-blue", "category": "rag", "turns": [{"q": "What is a blue flag in F1?", "expect_any": ["lap", "faster car", "allow"]}]}
+{"id": "rag-black", "category": "rag", "turns": [{"q": "What happens when a driver gets a black flag?", "expect_any": ["disqualified"]}]}
+{"id": "rag-drs", "category": "rag", "turns": [{"q": "What is DRS?", "expect_any": ["drag"]}]}
+{"id": "rag-mguk", "category": "rag", "turns": [{"q": "What does the MGU-K do?", "expect_any": ["braking"]}]}
+{"id": "rag-soft", "category": "rag", "turns": [{"q": "Which Pirelli compound is the softest?", "expect_any": ["C5"]}]}
+{"id": "rag-vsc", "category": "rag", "turns": [{"q": "How does the virtual safety car work?", "expect_any": ["delta"]}]}
+{"id": "rag-stopgo", "category": "rag", "turns": [{"q": "What is a stop-and-go penalty?", "expect_any": ["10 seconds"]}]}
+{"id": "rag-pitstop", "category": "rag", "turns": [{"q": "How long does a modern pit stop take?", "expect_any": ["2 and 3 seconds", "2-3 seconds", "two to three"]}]}
+{"id": "ref-france", "category": "refusal", "turns": [{"q": "What is the capital of France?", "expect_refusal": true}]}
+{"id": "ref-code", "category": "refusal", "turns": [{"q": "Write a python function to sort a list", "expect_refusal": true}]}
+{"id": "ref-pasta", "category": "refusal", "turns": [{"q": "Give me a recipe for carbonara", "expect_refusal": true}]}
+{"id": "ref-football", "category": "refusal", "turns": [{"q": "Who won the 2022 FIFA World Cup?", "expect_refusal": true}]}
+{"id": "fu-button", "category": "followup", "turns": [{"q": "Who won the 2009 championship?", "expect_any": ["Button"]}, {"q": "How many races did he win that year?", "expect_any": ["6 wins"], "expect_tool": "driver_season"}]}
+{"id": "fu-vettel-alonso", "category": "followup", "turns": [{"q": "How many titles does Vettel have?", "expect_any": ["4 world titles"]}, {"q": "what about Alonso?", "expect_any": ["2 world titles"]}]}
+{"id": "fu-rosberg-poles", "category": "followup", "turns": [{"q": "Who won the 2016 championship?", "expect_any": ["Rosberg"]}, {"q": "How many poles did he get that season?", "expect_any": ["8 poles"]}]}
+{"id": "fu-senna-prost", "category": "followup", "turns": [{"q": "Compare Senna and Prost", "expect_tool": "compare", "expect_any": ["Alain Prost"]}, {"q": "what about in 1988?", "expect_any": ["(in 1988)"], "expect_tool": "compare"}]}
+{"id": "live-1", "category": "live", "network": true, "turns": [{"q": "What's happening live right now?", "expect_tool": "live"}]}

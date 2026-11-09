@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,8 +10,8 @@ from typing import Optional
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 EMBEDDINGS_DIR = Path(__file__).resolve().parent.parent / "embeddings" / "chroma"
-COLLECTION_NAME = "f1_knowledge_v1"
-EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+COLLECTION_NAME = "f1_knowledge_v2"
+EMBEDDING_MODEL_NAME = os.getenv("F1_EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 CHUNK_SIZE = 550
 CHUNK_OVERLAP = 90
 
@@ -213,6 +214,78 @@ def build_documents(data_dir: Path) -> tuple[list[str], list[str], list[dict]]:
     return ids, texts, metadatas
 
 
+STATS_SOURCE = "season_summaries (stats DB)"
+
+
+def build_stats_documents(db_path=None) -> tuple[list[str], list[str], list[dict]]:
+    """One readable summary per season from the stats DB, so narrative questions
+    ("who won races for Brawn in 2009?") can be answered by retrieval too."""
+    from backend import stats_db
+
+    ids: list[str] = []
+    texts: list[str] = []
+    metadatas: list[dict] = []
+    db_path = db_path or stats_db.DEFAULT_DB_PATH
+    if not stats_db.database_exists(db_path):
+        return ids, texts, metadatas
+
+    conn = stats_db.connect(db_path, read_only=True)
+    index = stats_db.EntityIndex(conn)
+    seasons = [r["season"] for r in conn.execute("SELECT DISTINCT season FROM races ORDER BY season")]
+    for season in seasons:
+        lines: list[str] = []
+        champ = conn.execute(
+            "SELECT driver_id, points, wins FROM driver_standings WHERE season=? AND position=1", (season,)
+        ).fetchone()
+        if champ:
+            lines.append(
+                f"{season} Drivers' Championship leader/champion: {index.driver_name(champ['driver_id'])} "
+                f"with {champ['points']:g} points and {champ['wins']} wins."
+            )
+        cchamp = conn.execute(
+            "SELECT constructor_id, points FROM constructor_standings WHERE season=? AND position=1", (season,)
+        ).fetchone()
+        if cchamp:
+            lines.append(f"{season} Constructors' leader/champion: {index.constructor_name(cchamp['constructor_id'])}.")
+        winners = conn.execute(
+            "SELECT ra.round, ra.name, r.driver_id, r.constructor_id FROM races ra "
+            "JOIN results r ON r.season=ra.season AND r.round=ra.round AND r.position=1 "
+            "WHERE ra.season=? ORDER BY ra.round",
+            (season,),
+        ).fetchall()
+        for w in winners:
+            lines.append(
+                f"Round {w['round']} {w['name']} {season} won by {index.driver_name(w['driver_id'])} "
+                f"({index.constructor_name(w['constructor_id'])})."
+            )
+        if not lines:
+            continue
+        # Several races per chunk keeps chunks retrievable but focused.
+        for part, start in enumerate(range(0, len(lines), 6)):
+            text = f"{season} season: " + " ".join(lines[start:start + 6])
+            ids.append(f"season_{season}:{part}")
+            texts.append(text)
+            metadatas.append({
+                "source_file": STATS_SOURCE,
+                "topic": "season_summary",
+                "category": "history",
+                "entity": f"{season} season",
+                "heading": f"{season} season",
+                "season": str(season),
+                "era": infer_era(text),
+                "chunk_index": part,
+                "version_date": stats_db.get_meta(conn, "last_sync") or "",
+            })
+    conn.close()
+    return ids, texts, metadatas
+
+
+def build_all_documents(db_path=None) -> tuple[list[str], list[str], list[dict]]:
+    ids, texts, metadatas = build_documents(DATA_DIR)
+    s_ids, s_texts, s_meta = build_stats_documents(db_path)
+    return ids + s_ids, texts + s_texts, metadatas + s_meta
+
+
 def ingest() -> None:
     try:
         import chromadb
@@ -222,12 +295,12 @@ def ingest() -> None:
             "Missing dependencies for ingestion. Install requirements.txt first."
         ) from exc
 
-    ids, texts, metadatas = build_documents(DATA_DIR)
+    ids, texts, metadatas = build_all_documents()
     if not ids:
         print("No .txt files found in /data. Nothing to ingest.")
         return
 
-    print(f"Preparing {len(texts)} chunks from {len(sorted(DATA_DIR.glob('*.txt')))} files...")
+    print(f"Preparing {len(texts)} chunks ({len(sorted(DATA_DIR.glob('*.txt')))} text files + season summaries)...")
 
     model = SentenceTransformer(EMBEDDING_MODEL_NAME)
     vectors = model.encode(texts, normalize_embeddings=True).tolist()

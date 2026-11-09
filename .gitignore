@@ -17,3 +17,7 @@ model/*.gguf
 
 # Generated vector store (rebuild with: python -m backend.ingest)
 embeddings/
+
+# Stats database and API cache (rebuild with: python -m backend.fetch_stats)
+data/stats/
+.pytest_cache/

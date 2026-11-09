@@ -209,6 +209,100 @@
         cursor: wait;
       }
 
+      .msg.bot { white-space: pre-line; }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+
+      .toolbar select,
+      .toolbar button,
+      .chip {
+        background: #14161a;
+        color: var(--f1-silver);
+        border: 1px solid #30343a;
+        border-radius: 999px;
+        padding: 0.4rem 0.75rem;
+        font-family: "Barlow", sans-serif;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+
+      .toolbar button:hover,
+      .chip:hover {
+        border-color: var(--f1-red);
+        color: var(--f1-white);
+      }
+
+      .toolbar .live-btn::before {
+        content: "";
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-right: 0.4rem;
+        border-radius: 50%;
+        background: var(--f1-red);
+        box-shadow: 0 0 8px var(--f1-red);
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+
+      .spacer { flex: 1; }
+
+      .suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.6rem;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 0.55rem;
+        align-items: center;
+      }
+
+      .badge {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #fff;
+        background: rgba(225, 6, 0, 0.25);
+        border: 1px solid rgba(225, 6, 0, 0.5);
+        border-radius: 6px;
+        padding: 0.12rem 0.4rem;
+      }
+
+      .src {
+        font-size: 0.74rem;
+        color: var(--f1-silver);
+        border: 1px solid #30343a;
+        border-radius: 6px;
+        padding: 0.12rem 0.4rem;
+        cursor: help;
+      }
+
+      .resolved {
+        font-size: 0.75rem;
+        color: #8b939c;
+        margin-top: 0.35rem;
+        font-style: italic;
+      }
+
+      .chart-wrap {
+        margin-top: 0.7rem;
+        background: #121417;
+        border: 1px solid #2a2d32;
+        border-radius: 10px;
+        padding: 0.5rem;
+        height: 240px;
+      }
+
       @keyframes reveal {
         to {
           transform: translateY(0);
@@ -268,25 +362,56 @@
           <div class="logo">F1</div>
           <h1>Race Intelligence Chatbot</h1>
         </div>
-        <div class="tag">Local LLM + RAG</div>
+        <div class="tag" id="status-tag">Local LLM + stats + RAG</div>
       </header>
 
       <section class="chatbox">
-        <div id="thread" aria-live="polite">
-          <div class="msg bot">Pit wall online. Ask me anything about Formula 1.</div>
+        <div class="toolbar">
+          <select id="persona" aria-label="Answer style"></select>
+          <button class="live-btn" id="live" type="button">Live</button>
+          <span class="spacer"></span>
+          <button id="new-chat" type="button">New chat</button>
         </div>
 
+        <div id="thread" aria-live="polite">
+          <div class="msg bot">Pit wall online. Ask me about stats, results, rules, history, or what's happening live.</div>
+        </div>
+
+        <div class="suggestions" id="suggestions"></div>
+
         <div class="controls">
-          <input id="question" type="text" placeholder="Ask about drivers, teams, races, records..." />
+          <input id="question" type="text" placeholder="e.g. Compare Hamilton and Verstappen in 2021" />
           <button id="send">Send</button>
         </div>
       </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <script>
       const questionInput = document.getElementById("question");
       const sendButton = document.getElementById("send");
       const thread = document.getElementById("thread");
+      const personaSelect = document.getElementById("persona");
+      const suggestions = document.getElementById("suggestions");
+
+      const SUGGESTIONS = [
+        "Who has the most wins of all time?",
+        "Compare Hamilton and Verstappen in 2021",
+        "Who won the last race?",
+        "What if 2008 was scored with the medals system?",
+        "What does a yellow flag mean?",
+      ];
+      const TOOL_LABELS = {
+        rag: "knowledge base", driver_career: "stats", driver_season: "stats", season_standings: "standings",
+        champion: "stats", race_result: "race result", compare: "head-to-head", leaderboard: "leaderboard",
+        constructor_summary: "team stats", whatif: "what-if", live: "live timing", small_talk: "chat",
+      };
+      const CHART_COLORS = ["#e10600", "#c8ccd0", "#00a19c", "#ff8700"];
+
+      function newSessionId() {
+        return (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/-/g, "");
+      }
+      let sessionId = newSessionId();
 
       function addMessage(text, role) {
         const bubble = document.createElement("div");
@@ -294,52 +419,154 @@
         bubble.textContent = text;
         thread.appendChild(bubble);
         thread.scrollTop = thread.scrollHeight;
+        return bubble;
       }
 
-      async function sendQuestion() {
-        const question = questionInput.value.trim();
+      function renderChart(container, chart) {
+        if (!chart || !window.Chart || !chart.labels || !chart.labels.length) return;
+        const wrap = document.createElement("div");
+        wrap.className = "chart-wrap";
+        const canvas = document.createElement("canvas");
+        wrap.appendChild(canvas);
+        container.appendChild(wrap);
+        new Chart(canvas, {
+          type: chart.type === "line" ? "line" : "bar",
+          data: {
+            labels: chart.labels,
+            datasets: chart.datasets.map((ds, i) => ({
+              label: ds.label,
+              data: ds.data,
+              borderColor: CHART_COLORS[i % CHART_COLORS.length],
+              backgroundColor: CHART_COLORS[i % CHART_COLORS.length] + (chart.type === "line" ? "33" : "cc"),
+              tension: 0.25,
+              pointRadius: 2,
+            })),
+          },
+          options: {
+            maintainAspectRatio: false,
+            plugins: {
+              title: { display: true, text: chart.title, color: "#f8fafb" },
+              legend: { display: chart.datasets.length > 1, labels: { color: "#c8ccd0" } },
+            },
+            scales: {
+              x: { ticks: { color: "#8b939c", maxRotation: 60, autoSkip: true }, grid: { color: "#22252a" } },
+              y: { ticks: { color: "#8b939c" }, grid: { color: "#22252a" }, beginAtZero: true },
+            },
+          },
+        });
+      }
+
+      function renderAnswer(bubble, data, question) {
+        bubble.textContent = data.answer || "No answer returned.";
+        if (data.resolved_question && data.resolved_question.toLowerCase() !== question.toLowerCase()) {
+          const r = document.createElement("div");
+          r.className = "resolved";
+          r.textContent = `Understood as: ${data.resolved_question}`;
+          bubble.appendChild(r);
+        }
+        renderChart(bubble, data.chart);
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        if (data.tool && !data.refusal) {
+          const badge = document.createElement("span");
+          badge.className = "badge";
+          badge.textContent = TOOL_LABELS[data.tool] || data.tool;
+          meta.appendChild(badge);
+        }
+        (data.sources || []).forEach((s) => {
+          const chip = document.createElement("span");
+          chip.className = "src";
+          chip.textContent = (/^\d+$/.test(s.id) ? `[${s.id}] ` : "") + s.file;
+          chip.title = s.snippet || "";
+          meta.appendChild(chip);
+        });
+        if (meta.children.length) bubble.appendChild(meta);
+        thread.scrollTop = thread.scrollHeight;
+      }
+
+      async function sendQuestion(text) {
+        const question = (text ?? questionInput.value).trim();
         if (!question) {
           addMessage("Please enter a question first.", "bot");
           return;
         }
-
         addMessage(question, "user");
         questionInput.value = "";
         questionInput.focus();
-
         sendButton.disabled = true;
-        const thinkingBubble = document.createElement("div");
-        thinkingBubble.className = "msg bot";
-        thinkingBubble.textContent = "Thinking from the pit wall...";
-        thread.appendChild(thinkingBubble);
-        thread.scrollTop = thread.scrollHeight;
-
+        const bubble = addMessage("Thinking from the pit wall...", "bot");
         try {
           const res = await fetch("/ask", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question })
+            body: JSON.stringify({ question, session_id: sessionId, persona: personaSelect.value }),
           });
-
-          if (!res.ok) {
-            throw new Error(`Request failed with status ${res.status}`);
-          }
-
+          if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
           const data = await res.json();
-          thinkingBubble.textContent = data.answer || "No answer returned.";
+          sessionId = data.session_id || sessionId;
+          renderAnswer(bubble, data, question);
         } catch (error) {
-          thinkingBubble.textContent = `Error: ${error.message}`;
+          bubble.textContent = `Error: ${error.message}`;
         } finally {
           sendButton.disabled = false;
         }
       }
 
-      sendButton.addEventListener("click", sendQuestion);
-      questionInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-          sendQuestion();
+      async function loadPersonas() {
+        try {
+          const res = await fetch("/personas");
+          const personas = await res.json();
+          Object.entries(personas).forEach(([key, label]) => {
+            const opt = document.createElement("option");
+            opt.value = key;
+            opt.textContent = label;
+            personaSelect.appendChild(opt);
+          });
+        } catch {
+          personaSelect.innerHTML = '<option value="default">Default</option>';
         }
+      }
+
+      async function loadStatus() {
+        try {
+          const h = await (await fetch("/health")).json();
+          const parts = [];
+          if (h.stats_db) parts.push(`stats to ${h.stats_latest_season}`);
+          parts.push(h.vector_search ? "hybrid search" : "keyword search");
+          if (h.model_present) parts.push("local LLM");
+          document.getElementById("status-tag").textContent = parts.join(" · ");
+        } catch {}
+      }
+
+      SUGGESTIONS.forEach((s) => {
+        const chip = document.createElement("button");
+        chip.className = "chip";
+        chip.type = "button";
+        chip.textContent = s;
+        chip.addEventListener("click", () => sendQuestion(s));
+        suggestions.appendChild(chip);
       });
+
+      document.getElementById("live").addEventListener("click", () => sendQuestion("What's happening live right now?"));
+      document.getElementById("new-chat").addEventListener("click", async () => {
+        try {
+          await fetch("/reset", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ session_id: sessionId }),
+          });
+        } catch {}
+        sessionId = newSessionId();
+        thread.innerHTML = "";
+        addMessage("New chat. Ask away.", "bot");
+      });
+      sendButton.addEventListener("click", () => sendQuestion());
+      questionInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") sendQuestion();
+      });
+
+      loadPersonas();
+      loadStatus();
     </script>
   </body>
 </html>
